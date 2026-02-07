@@ -26,9 +26,31 @@
     a{text-decoration:none;color:inherit;}
     .container{width:min(1100px, 92%); margin:0 auto;}
 
+    /* TOP RUNNING SLIDE */
+    .top-marquee{
+      position: sticky;
+      top: 0;
+      z-index: 2000;
+      background: rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+    }
+    .marquee-track{
+      white-space: nowrap;
+      padding: 10px 0;
+      font-weight: 900;
+      color: #e9ecff;
+      animation: marquee 18s linear infinite;
+    }
+    @keyframes marquee{
+      0%{ transform: translateX(100%); }
+      100%{ transform: translateX(-100%); }
+    }
+
     /* NAV */
     nav{
-      position:sticky; top:0; z-index:999;
+      position:sticky; top:40px; z-index:999;
       backdrop-filter: blur(12px);
       background: rgba(11,16,32,.6);
       border-bottom:1px solid rgba(255,255,255,.08);
@@ -280,6 +302,7 @@
 
     /* MOBILE */
     @media (max-width: 880px){
+      nav{top:40px;}
       .hero{grid-template-columns:1fr; padding-top:10px;}
       .grid-3{grid-template-columns:1fr;}
       .plans{grid-template-columns:1fr;}
@@ -297,6 +320,15 @@
 </head>
 
 <body>
+
+  <!-- TOP RUNNING SLIDE -->
+  <div class="top-marquee">
+    <div class="marquee-track">
+      💖 Without you we are none — Thank you for supporting Shobha Videos 💖 • Happy Valentine Week 💖 •
+      🎉 Pay for 1 Year and get Installation FREE 🎉 • Call/WhatsApp: +91 79048 79797
+    </div>
+  </div>
+
   <!-- NAV -->
   <nav>
     <div class="container">
@@ -316,7 +348,6 @@
 
         <div class="nav-links" id="navLinks">
           <a href="#home">Home</a>
-          <a href="#journey">Journey</a>
           <a href="#about">About</a>
           <a href="#services">Services</a>
           <a href="#plans">Plans</a>
@@ -328,7 +359,6 @@
       <!-- mobile links -->
       <div class="nav-links mobile" id="mobileLinks" style="display:none;">
         <a href="#home" onclick="closeMenu()">Home</a>
-        <a href="#journey" onclick="closeMenu()">Journey</a>
         <a href="#about" onclick="closeMenu()">About</a>
         <a href="#services" onclick="closeMenu()">Services</a>
         <a href="#plans" onclick="closeMenu()">Plans</a>
@@ -356,7 +386,7 @@
         </div>
 
         <p style="margin-top:14px;color:rgba(255,255,255,.55);line-height:1.6;">
-          📍 Service available in your local area • Installation within 24–48 hours (depends on location)
+          🎉 Special Offer: Pay for 1 year and get Installation FREE!
         </p>
       </div>
 
@@ -387,78 +417,6 @@
       </div>
     </div>
   </header>
-
-  <!-- JOURNEY -->
-  <section id="journey">
-    <div class="container">
-      <div class="section-title">
-        <h2>Our Journey</h2>
-        <p>
-          Shobha Videos is not just a business — it’s a journey built with hard work, trust, and years of service.
-        </p>
-      </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <div class="icon">📀</div>
-          <h3>The DVD Days</h3>
-          <p>
-            In the early days, our founder used to carry a DVD player to customer homes and show movies directly.
-            That was the beginning of Shobha Videos.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="icon">💿</div>
-          <h3>CD Rental Era</h3>
-          <p>
-            After some years, every house started buying DVD players. Customers began renting or buying CDs and DVDs.
-            This continued for several years with strong customer support.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="icon">📺</div>
-          <h3>Cable TV Revolution</h3>
-          <p>
-            Then cable TV arrived through wire connections. We expanded our service to provide stable cable TV
-            to many homes in our area.
-          </p>
-        </div>
-      </div>
-
-      <div style="height:16px;"></div>
-
-      <div class="grid-3">
-        <div class="card">
-          <div class="icon">📡</div>
-          <h3>Set-Top Box Upgrade</h3>
-          <p>
-            As technology improved, set-top boxes became common. We upgraded our systems and helped customers
-            switch smoothly to the new method.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="icon">🌐</div>
-          <h3>Internet Services</h3>
-          <p>
-            Today, we are growing again — now providing high-speed internet for homes and businesses.
-            Same trust, new technology.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="icon">🤝</div>
-          <h3>Trust Since Day One</h3>
-          <p>
-            From DVDs to internet, our journey is built on customer trust, honest service, and quick support.
-            We continue to serve with the same dedication.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ABOUT -->
   <section id="about">
@@ -534,6 +492,10 @@
         </p>
       </div>
 
+      <p style="margin-bottom:16px;color:#bff7ea;font-weight:900;">
+        🎉 Special Offer: Pay for 1 year and get Installation FREE!
+      </p>
+
       <div class="plans">
         <div class="card plan">
           <div class="tag">Starter</div>
@@ -595,6 +557,27 @@
             <input id="custPhone" type="tel" placeholder="Enter Phone Number">
             <input id="cAddress" type="text" placeholder="Enter Address (Optional)">
 
+            <select id="needService">
+              <option value="">Which service do you need?</option>
+              <option>Cable TV</option>
+              <option>Internet</option>
+              <option>Cable + Internet</option>
+            </select>
+
+            <select id="installTime">
+              <option value="">When do you need installation?</option>
+              <option>Today</option>
+              <option>Within 1-2 Days</option>
+              <option>This Week</option>
+            </select>
+
+            <select id="oneYearOffer">
+              <option value="">Do you want 1 Year Offer? (Installation FREE)</option>
+              <option>Yes</option>
+              <option>No</option>
+              <option>Need details</option>
+            </select>
+
             <select id="cType">
               <option value="">Select Request Type</option>
               <option>New Connection</option>
@@ -623,7 +606,7 @@
             ✔ Easy complaint registration<br/>
             ✔ Quick new connection process<br/>
             ✔ Plan upgrade without calling<br/><br/>
-            Our team will contact you soon after receiving your details.
+            🎉 Pay for 1 year and get Installation FREE!
           </p>
         </div>
       </div>
@@ -708,6 +691,9 @@
       const id = document.getElementById("custId").value.trim();
       const phone = document.getElementById("custPhone").value.trim();
       const address = document.getElementById("cAddress").value.trim();
+      const service = document.getElementById("needService").value.trim();
+      const time = document.getElementById("installTime").value.trim();
+      const offer = document.getElementById("oneYearOffer").value.trim();
       const type = document.getElementById("cType").value.trim();
       const msg = document.getElementById("cMsg").value.trim();
 
@@ -728,6 +714,11 @@
 🆔 LCO/Customer ID: ${id || "Not given"}
 📞 Phone: ${phone}
 🏠 Address: ${address || "Not given"}
+
+📡 Service Needed: ${service || "Not selected"}
+⏰ Installation Time: ${time || "Not selected"}
+🎁 1 Year Offer: ${offer || "Not selected"}
+
 🛠 Request Type: ${type}
 
 📝 Message:
