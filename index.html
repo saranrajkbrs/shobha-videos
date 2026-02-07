@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shobha Videos | Cable TV & Internet Provider</title>
+
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121a33;
+      --text:#e9ecff;
+      --muted:#b7c0ff;
+      --accent:#6c7bff;
+      --accent2:#30d6b0;
+      --radius:22px;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial;}
+    body{
+      background: radial-gradient(1200px 700px at 20% 0%, #182356 0%, var(--bg) 55%);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit;}
+    .container{width:min(1100px, 92%); margin:0 auto;}
+
+    /* NAV */
+    nav{
+      position:sticky; top:0; z-index:999;
+      backdrop-filter: blur(12px);
+      background: rgba(11,16,32,.6);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; gap:10px; align-items:center;
+      font-weight:800; letter-spacing:.4px;
+    }
+
+    /* LOGO IMAGE */
+    .logo-img{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      object-fit:cover;
+      box-shadow: 0 10px 30px rgba(108,123,255,.25);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+    }
+
+    .nav-links{
+      display:flex; gap:18px; align-items:center;
+      font-weight:600; color:var(--muted);
+    }
+    .nav-links a{padding:10px 12px;border-radius:14px;transition:.2s;}
+    .nav-links a:hover{background:rgba(255,255,255,.06); color:var(--text);}
+
+    .menu-btn{
+      display:none;
+      border:1px solid rgba(255,255,255,.15);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:14px;
+      cursor:pointer;
+      font-weight:700;
+    }
+
+    /* HERO */
+    header{padding:70px 0 35px;}
+    .hero{
+      display:grid; grid-template-columns: 1.2fr .8fr; gap:28px;
+      align-items:center;
+    }
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      padding:10px 14px;
+      border-radius:999px;
+      color:var(--muted);
+      font-weight:700;
+      width:fit-content;
+    }
+    .badge span{
+      width:9px;height:9px;border-radius:99px;
+      background:var(--accent2);
+      box-shadow: 0 0 20px rgba(48,214,176,.55);
+    }
+
+    h1{
+      font-size: clamp(34px, 4vw, 54px);
+      line-height:1.05;
+      margin:14px 0 14px;
+    }
+    .sub{
+      color:var(--muted);
+      font-size: clamp(15px, 1.5vw, 18px);
+      line-height:1.7;
+      max-width:58ch;
+    }
+
+    .cta{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top:22px;
+    }
+    .btn{
+      padding:13px 16px;
+      border-radius:18px;
+      font-weight:800;
+      border:1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.06);
+      cursor:pointer;
+      transition:.2s;
+      display:inline-flex; align-items:center; gap:10px;
+    }
+    .btn:hover{transform: translateY(-2px); background: rgba(255,255,255,.09);}
+    .btn.primary{
+      background: linear-gradient(135deg, var(--accent), #9aa4ff);
+      color:#081025;
+      border:none;
+      box-shadow: 0 18px 50px rgba(108,123,255,.28);
+    }
+    .btn.whatsapp{
+      background: linear-gradient(135deg, #25D366, #1fae54);
+      color:#081025;
+      border:none;
+    }
+    .btn.call{
+      background: linear-gradient(135deg, #ffcc00, #ff8a00);
+      color:#081025;
+      border:none;
+    }
+
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: 0 22px 70px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute;
+      width:260px;height:260px;
+      background: radial-gradient(circle, rgba(108,123,255,.45), transparent 60%);
+      top:-110px; right:-120px;
+      filter: blur(2px);
+    }
+    .stat-grid{
+      display:grid; gap:12px;
+      grid-template-columns: 1fr 1fr;
+      margin-top:10px;
+    }
+    .stat{
+      background: rgba(18,26,51,.7);
+      border:1px solid rgba(255,255,255,.10);
+      padding:14px;
+      border-radius:18px;
+    }
+    .stat h3{font-size:18px;}
+    .stat p{color:var(--muted); margin-top:6px; font-size:13px; line-height:1.4;}
+
+    /* SECTIONS */
+    section{padding:40px 0;}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:20px; margin-bottom:18px;
+    }
+    .section-title h2{
+      font-size: clamp(22px, 2.5vw, 30px);
+    }
+    .section-title p{
+      color:var(--muted);
+      max-width:60ch;
+      line-height:1.6;
+    }
+
+    /* CARDS */
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+    }
+    .card{
+      background: rgba(18,26,51,.7);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding:18px;
+      transition:.2s;
+    }
+    .card:hover{transform: translateY(-4px); border-color: rgba(108,123,255,.35);}
+    .icon{
+      width:46px; height:46px; border-radius:18px;
+      display:grid; place-items:center;
+      background: rgba(108,123,255,.15);
+      border:1px solid rgba(108,123,255,.25);
+      margin-bottom:12px;
+      font-size:20px;
+    }
+    .card h3{font-size:18px;}
+    .card p{color:var(--muted); margin-top:8px; line-height:1.6;}
+
+    /* PLANS */
+    .plans{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+    }
+    .plan .price{
+      font-size:34px;
+      font-weight:900;
+      margin:10px 0;
+    }
+    .tag{
+      display:inline-flex;
+      width:fit-content;
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:12px;
+      background: rgba(48,214,176,.12);
+      border:1px solid rgba(48,214,176,.25);
+      color:#bff7ea;
+    }
+    .popular{
+      border:1px solid rgba(48,214,176,.35);
+      box-shadow: 0 18px 60px rgba(48,214,176,.12);
+    }
+    .plan ul{
+      margin-top:12px;
+      display:grid;
+      gap:8px;
+      color:var(--muted);
+      padding-left:18px;
+      line-height:1.5;
+    }
+
+    /* CONTACT / FORM */
+    .contact-wrap{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    .contact-box{
+      background: rgba(18,26,51,.7);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding:18px;
+    }
+    .contact-box p{color:var(--muted); margin-top:10px; line-height:1.7;}
+    .contact-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;}
+
+    /* INPUTS */
+    input, select, textarea{
+      padding:14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      color:white;
+      outline:none;
+    }
+    textarea{resize:none;}
+
+    footer{
+      padding:25px 0 40px;
+      color:rgba(255,255,255,.55);
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,.08);
+      margin-top:25px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 880px){
+      .hero{grid-template-columns:1fr; padding-top:10px;}
+      .grid-3{grid-template-columns:1fr;}
+      .plans{grid-template-columns:1fr;}
+      .contact-wrap{grid-template-columns:1fr;}
+      .nav-links{display:none;}
+      .menu-btn{display:block;}
+      .nav-links.mobile{
+        display:flex;
+        flex-direction:column;
+        gap:8px;
+        padding:10px 0 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <div class="brand">
+          <img src="logo.jpg" alt="Shobha Videos Logo" class="logo-img">
+
+          <div>
+            <div style="font-size:16px;">Shobha Videos</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.55);font-weight:700;">
+              Cable TV • Internet Provider
+            </div>
+          </div>
+        </div>
+
+        <button class="menu-btn" onclick="toggleMenu()">Menu ☰</button>
+
+        <div class="nav-links" id="navLinks">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#plans">Plans</a>
+          <a href="#customer">Customer</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <!-- mobile links -->
+      <div class="nav-links mobile" id="mobileLinks" style="display:none;">
+        <a href="#home" onclick="closeMenu()">Home</a>
+        <a href="#about" onclick="closeMenu()">About</a>
+        <a href="#services" onclick="closeMenu()">Services</a>
+        <a href="#plans" onclick="closeMenu()">Plans</a>
+        <a href="#customer" onclick="closeMenu()">Customer</a>
+        <a href="#contact" onclick="closeMenu()">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home">
+    <div class="container hero">
+      <div>
+        <div class="badge"><span></span> Trusted Local Service • Fast Support</div>
+        <h1>Shobha Videos<br/>Cable TV & High-Speed Internet</h1>
+        <p class="sub">
+          We provide reliable <b>Cable TV</b> connections and <b>high-speed Internet</b> for homes and businesses.
+          Affordable plans, quick installation, and friendly support.
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="#plans">📦 View Plans</a>
+          <a class="btn whatsapp" id="waBtn" href="#">💬 WhatsApp</a>
+          <a class="btn call" id="callBtn" href="#">📞 Call Now</a>
+        </div>
+
+        <p style="margin-top:14px;color:rgba(255,255,255,.55);line-height:1.6;">
+          📍 Service available in your local area • Installation within 24–48 hours (depends on location)
+        </p>
+      </div>
+
+      <div class="hero-card">
+        <h3 style="font-size:18px;">Why Customers Choose Us</h3>
+        <p style="color:var(--muted); margin-top:8px; line-height:1.6;">
+          Strong connectivity, stable cable service, and fast response when you need help.
+        </p>
+
+        <div class="stat-grid">
+          <div class="stat">
+            <h3>⚡ Fast Setup</h3>
+            <p>Quick installation and smooth onboarding.</p>
+          </div>
+          <div class="stat">
+            <h3>🛠 Support</h3>
+            <p>We respond quickly for issues & upgrades.</p>
+          </div>
+          <div class="stat">
+            <h3>📺 Cable TV</h3>
+            <p>Clear channels and stable service.</p>
+          </div>
+          <div class="stat">
+            <h3>🌐 Internet</h3>
+            <p>High-speed plans for every budget.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About Shobha Videos</h2>
+        <p>
+          We are a local cable TV operator and internet provider focused on quality service,
+          fair pricing, and strong customer support.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">🏠</div>
+          <h3>Home Connections</h3>
+          <p>Perfect plans for families, streaming, YouTube, and online classes.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🏢</div>
+          <h3>Business Internet</h3>
+          <p>Stable connectivity for offices, shops, and small businesses.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🤝</div>
+          <h3>Trusted Service</h3>
+          <p>We believe in long-term customer relationships and fast issue resolution.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Services</h2>
+        <p>We provide both cable and internet services with installation and customer support.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">📺</div>
+          <h3>Cable TV Connection</h3>
+          <p>HD channel support, stable connection, and easy monthly renewal.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🌐</div>
+          <h3>High-Speed Internet</h3>
+          <p>Affordable internet plans for browsing, streaming, gaming, and work.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🧰</div>
+          <h3>Installation & Support</h3>
+          <p>New connection, shifting, upgrades, router setup, and quick service support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANS -->
+  <section id="plans">
+    <div class="container">
+      <div class="section-title">
+        <h2>Internet Plans</h2>
+        <p>
+          Example packages. You can edit the speed & price easily.
+          (Tell me your real plans and I will update it perfectly.)
+        </p>
+      </div>
+
+      <div class="plans">
+        <div class="card plan">
+          <div class="tag">Starter</div>
+          <div class="price">₹499</div>
+          <p style="color:var(--muted)">Best for basic usage</p>
+          <ul>
+            <li>Speed: 40 Mbps</li>
+            <li>Unlimited Data</li>
+            <li>Support Included</li>
+          </ul>
+        </div>
+
+        <div class="card plan popular">
+          <div class="tag">Most Popular</div>
+          <div class="price">₹699</div>
+          <p style="color:var(--muted)">Best for streaming & work</p>
+          <ul>
+            <li>Speed: 75 Mbps</li>
+            <li>Unlimited Data</li>
+            <li>Fast Service Response</li>
+          </ul>
+        </div>
+
+        <div class="card plan">
+          <div class="tag">Premium</div>
+          <div class="price">₹999</div>
+          <p style="color:var(--muted)">Best for gaming & heavy users</p>
+          <ul>
+            <li>Speed: 150 Mbps</li>
+            <li>Unlimited Data</li>
+            <li>Priority Support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOMER FORM -->
+  <section id="customer">
+    <div class="container">
+      <div class="section-title">
+        <h2>Customer Details</h2>
+        <p>
+          Enter your details for new connection, shifting, plan upgrade, or complaints.
+          Our team will contact you soon.
+        </p>
+      </div>
+
+      <div class="contact-wrap">
+        <div class="contact-box">
+          <h3 style="font-size:18px;">🧾 Customer Form</h3>
+          <p style="margin-bottom:14px;">
+            Fill the details and click Submit. It will send your details directly to WhatsApp.
+          </p>
+
+          <div style="display:grid; gap:12px;">
+            <input id="cName" type="text" placeholder="Enter Your Name">
+
+            <input id="custId" type="text" placeholder="Enter LCO / Customer ID (Optional)">
+
+            <input id="custPhone" type="tel" placeholder="Enter Phone Number">
+
+            <input id="cAddress" type="text" placeholder="Enter Address (Optional)">
+
+            <select id="cType">
+              <option value="">Select Request Type</option>
+              <option>New Connection</option>
+              <option>Plan Upgrade</option>
+              <option>Shifting</option>
+              <option>Complaint</option>
+              <option>Other</option>
+            </select>
+
+            <textarea id="cMsg" rows="4" placeholder="Enter Message / Complaint"></textarea>
+
+            <button class="btn primary" onclick="submitCustomer()" style="width:fit-content;">
+              ✅ Submit Details
+            </button>
+          </div>
+
+          <p style="margin-top:14px;color:rgba(255,255,255,.55);line-height:1.6;">
+            Note: After submitting, WhatsApp will open. Please click Send.
+          </p>
+        </div>
+
+        <div class="contact-box">
+          <h3 style="font-size:18px;">📌 Why submit details?</h3>
+          <p>
+            ✔ Faster support<br/>
+            ✔ Easy complaint registration<br/>
+            ✔ Quick new connection process<br/>
+            ✔ Plan upgrade without calling<br/><br/>
+            Our team will contact you soon after receiving your details.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>
+          Call or WhatsApp us for new connection, plan upgrade, shifting, or complaints.
+        </p>
+      </div>
+
+      <div class="contact-wrap">
+        <div class="contact-box">
+          <h3 style="font-size:18px;">📍 Office & Service Area</h3>
+          <p>
+            Shobha Videos provides cable TV and internet services in your local area.
+            <br/><br/>
+            <b>Working Hours:</b> 9:00 AM – 9:00 PM
+          </p>
+        </div>
+
+        <div class="contact-box">
+          <h3 style="font-size:18px;">📞 Quick Contact</h3>
+          <p>
+            Tap below to contact instantly.
+            <br/><br/>
+            <b>Phone:</b> +91 79048 79797<br/>
+            <b>WhatsApp:</b> +91 79048 79797<br/>
+            <b>Email:</b> shobhavideos@gmail.com
+          </p>
+
+          <div class="contact-actions">
+            <a class="btn whatsapp" id="waBtn2" href="#">💬 WhatsApp Now</a>
+            <a class="btn call" id="callBtn2" href="#">📞 Call Now</a>
+            <a class="btn" href="#home">⬆ Back to Top</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Shobha Videos • All Rights Reserved
+  </footer>
+
+  <script>
+    // YOUR DETAILS
+    const phoneNumber = "917904879797";
+    const whatsappNumber = "917904879797";
+    const whatsappMessage = "Hi Shobha Videos, I need a new Cable TV / Internet connection. Please share plans.";
+
+    // Setup WhatsApp & Call buttons
+    document.getElementById("waBtn").href =
+      "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(whatsappMessage);
+
+    document.getElementById("waBtn2").href =
+      "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(whatsappMessage);
+
+    document.getElementById("callBtn").href = "tel:+" + phoneNumber;
+    document.getElementById("callBtn2").href = "tel:+" + phoneNumber;
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile menu
+    function toggleMenu(){
+      const mobile = document.getElementById("mobileLinks");
+      mobile.style.display = (mobile.style.display === "none" || mobile.style.display === "") ? "flex" : "none";
+    }
+    function closeMenu(){
+      document.getElementById("mobileLinks").style.display = "none";
+    }
+
+    // CUSTOMER FORM SUBMIT -> SEND TO WHATSAPP
+    function submitCustomer(){
+      const name = document.getElementById("cName").value.trim();
+      const id = document.getElementById("custId").value.trim();
+      const phone = document.getElementById("custPhone").value.trim();
+      const address = document.getElementById("cAddress").value.trim();
+      const type = document.getElementById("cType").value.trim();
+      const msg = document.getElementById("cMsg").value.trim();
+
+      if(!name || !phone || !type){
+        alert("Please enter Name, Phone Number and Request Type.");
+        return;
+      }
+
+      if(phone.length < 10){
+        alert("Please enter a valid phone number.");
+        return;
+      }
+
+      const text =
+`📌 *Shobha Videos - Customer Details*
+
+👤 Name: ${name}
+🆔 LCO/Customer ID: ${id || "Not given"}
+📞 Phone: ${phone}
+🏠 Address: ${address || "Not given"}
+🛠 Request Type: ${type}
+
+📝 Message:
+${msg || "No message"}`;
+
+      const waLink = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(text);
+      window.open(waLink, "_blank");
+    }
+  </script>
+</body>
+</html>
